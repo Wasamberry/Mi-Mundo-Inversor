@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#173b32">
+<title>Mi Mundo Inversor</title>
+<style>
+:root{--ink:#19352e;--muted:#667a70;--green:#2f7656;--lime:#c9e8a0;--cream:#fbf8ed;--card:#fffefa;--line:#e4e8dc;--gold:#e9b84d;--red:#b85a54}
+*{box-sizing:border-box}body{margin:0;background:linear-gradient(180deg,#eaf3df,#fbf8ed 420px);font-family:ui-rounded,"Trebuchet MS",system-ui,sans-serif;color:var(--ink)}
+header{padding:28px 18px 18px;text-align:center}header .tag{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#52735e;font-weight:800}h1{font-size:clamp(30px,6vw,48px);margin:8px 0 5px;letter-spacing:-1.5px}header p{margin:0;color:var(--muted)}
+main{max-width:1080px;margin:auto;padding:0 16px 48px}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0}.stat,.panel{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:18px;box-shadow:0 8px 24px #244c3010}.stat small{display:block;color:var(--muted);font-weight:700;font-size:12px}.stat strong{display:block;font-size:clamp(20px,4vw,29px);margin-top:6px}.stat span{font-size:12px;color:var(--muted)}
+.world{position:relative;overflow:hidden;border-radius:26px;min-height:310px;padding:22px;background:linear-gradient(#bce3ed 0 54%,#91c96d 54% 100%);border:1px solid #c7ddc6;text-align:center}.sun{position:absolute;right:9%;top:25px;font-size:42px}.cloud{position:absolute;left:8%;top:45px;font-size:34px;opacity:.8}.world h2{position:relative;margin:0;font-size:25px}.world .subtitle{position:relative;color:#426a56;font-size:13px;margin:5px 0 14px}.land{position:relative;display:flex;align-items:end;justify-content:center;gap:9px;min-height:155px;padding:12px 4px 0}.building{font-size:clamp(38px,8vw,66px);filter:drop-shadow(0 5px 2px #335c2b33);animation:pop .4s ease}.person{font-size:23px;display:inline-block;margin:0 -2px;animation:pop .35s ease}.crew{background:#fff9dfd9;border:1px solid #ead9a2;border-radius:15px;padding:9px 14px;display:inline-block;font-size:13px;font-weight:700;margin-top:12px}.progress-wrap{margin-top:14px;background:#ffffffb8;border-radius:15px;padding:12px 14px;text-align:left}.progress-head{display:flex;justify-content:space-between;gap:10px;font-size:12px;font-weight:800}.track{height:12px;background:#dce7d4;border-radius:20px;overflow:hidden;margin:8px 0 5px}.fill{height:100%;background:linear-gradient(90deg,#64a96b,#d3b64f);border-radius:20px;width:0%}.milestones{display:flex;justify-content:space-between;font-size:11px;color:#54705c}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}.panel h3{margin:0 0 5px;font-size:19px}.hint{color:var(--muted);font-size:13px;margin:0 0 15px;line-height:1.5}label{font-size:12px;font-weight:800;color:#536b5e;display:block;margin:10px 0 5px}input{width:100%;border:1px solid #dce4d8;background:#fff;border-radius:11px;padding:12px;font:inherit;color:var(--ink);outline-color:#75a978}button{border:0;border-radius:12px;background:var(--green);color:white;padding:12px 16px;font:inherit;font-weight:800;cursor:pointer;margin-top:14px}button:hover{filter:brightness(1.08)}button.secondary{background:#e9f0e4;color:var(--ink)}.actions{display:flex;gap:8px;flex-wrap:wrap}.notice{font-size:12px;color:var(--muted);margin-top:10px;line-height:1.45}.chart{width:100%;height:180px;display:block}.empty{padding:30px 10px;text-align:center;color:var(--muted);font-size:13px}.history{display:flex;flex-direction:column;gap:8px;max-height:290px;overflow:auto}.entry{display:flex;justify-content:space-between;gap:12px;padding:10px 12px;border-radius:12px;background:#f4f6ed;font-size:13px}.entry b{display:block}.entry small{color:var(--muted)}.positive{color:var(--green)}.negative{color:var(--red)}.grave{background:#f3f0eb;border-color:#e6ded2}.graveyard{display:flex;gap:8px;flex-wrap:wrap;min-height:55px}.tomb{background:#e4e0da;border-radius:12px 12px 5px 5px;padding:10px 12px;text-align:center;font-size:12px;color:#625f59}.tomb b{display:block;font-size:15px}.footer{text-align:center;color:#718176;font-size:12px;padding:22px}
+@keyframes pop{from{transform:translateY(8px) scale(.85);opacity:.4}to{transform:none;opacity:1}}
+@media(max-width:700px){.stats{grid-template-columns:1fr 1fr}.stats .stat:last-child{grid-column:span 2}.grid{grid-template-columns:1fr}.world{min-height:300px;padding:18px 13px}.stat{padding:14px}.land{min-height:135px}}
+</style></head>
+<body>
+<header><div class="tag">Un proyecto que crece mes a mes</div><h1>🌱 Mi Mundo Inversor</h1><p>Cada aporte construye. Cada mes enseña. Cada paso cuenta.</p></header>
+<main>
+<section class="stats">
+<div class="stat"><small>VALOR ACTUAL DE LA CARTERA</small><strong id="ars">$ 0</strong><span id="usd">USD 0</span></div>
+<div class="stat"><small>CAPITAL APORTADO</small><strong id="contributed">$ 0</strong><span>Dinero que fue ingresando</span></div>
+<div class="stat"><small>RESULTADO DE LA INVERSIÓN</small><strong id="profit">$ 0</strong><span id="profitPct">Todavía no hay registros</span></div>
+</section>
+<section class="world">
+<div class="sun">☀️</div><div class="cloud">☁️</div>
+<h2 id="worldTitle">¡Manos a la obra!</h2><div class="subtitle" id="worldSub">Tu mundo empieza con el primer aporte</div>
+<div class="land" id="land"><span class="building">🪵</span><span class="building">🧑‍🌾</span><span class="building">🛠️</span></div>
+<div class="crew" id="crew">👷 0 constructores · 0 habitantes</div>
+<div class="progress-wrap"><div class="progress-head"><span>PRÓXIMA META: <span id="nextGoal">USD 100</span></span><span id="progressText">0%</span></div><div class="track"><div class="fill" id="progress"></div></div><div class="milestones"><span>🏕️ Inicio</span><span>🏘️ USD 100</span><span>🏡 USD 500</span><span>🌆 USD 1.000</span></div></div>
+</section>
+<div class="grid">
+<section class="panel">
+<h3>🧱 Actualizar el mundo</h3><p class="hint">Una vez al mes, cargá el nuevo aporte y cuánto vale toda la cartera en ese momento. El resto se calcula solo.</p>
+<label for="month">Mes de actualización</label><input id="month" type="month">
+<label for="deposit">Nuevo aporte del mes (ARS)</label><input id="deposit" type="number" min="0" step="0.01" placeholder="Ej. 50000">
+<label for="value">Valor actual de toda la cartera (ARS)</label><input id="value" type="number" min="0" step="0.01" placeholder="Ej. 350000">
+<label for="fx">Dólar de referencia (ARS por USD)</label><input id="fx" type="number" min="0.01" step="0.01" placeholder="Ej. 1500">
+<button id="save">Guardar actualización mensual</button><div class="notice">El resultado del mes se calcula así: valor actual − valor anterior − nuevo aporte. Usá siempre el mismo criterio de dólar para comparar las metas.</div>
+</section>
+<section class="panel">
+<h3>📈 Cómo viene creciendo</h3><p class="hint">El gráfico muestra el valor de la cartera en pesos a lo largo del tiempo.</p><svg class="chart" id="chart" viewBox="0 0 500 180" role="img" aria-label="Gráfico de evolución de la cartera"><text x="250" y="90" text-anchor="middle" fill="#718176" font-size="13">Tus registros aparecerán acá</text></svg>
+<div class="actions"><button class="secondary" id="export">Descargar respaldo</button><button class="secondary" id="importBtn">Importar respaldo</button><input id="file" type="file" accept="application/json" hidden></div><div class="notice">Los datos se guardan en este navegador. Descargá un respaldo para conservarlos o pasarlos a otro dispositivo.</div>
+</section>
+<section class="panel">
+<h3>📅 Historial mensual</h3><p class="hint">Cada actualización queda registrada para ver el camino recorrido.</p><div class="history" id="history"><div class="empty">Todavía no hay meses cargados. ¡A construir!</div></div>
+</section>
+<section class="panel grave">
+<h3>🪦 El cementerio de los meses difíciles</h3><p class="hint">Las inversiones también tienen meses negativos. Acá recordamos esos tropiezos: forman parte del aprendizaje y no desaparecen aunque después haya recuperación.</p><div class="graveyard" id="graveyard"><div class="empty">Por ahora no hay meses para recordar. ¡Ojalá sean pocos!</div></div>
+</section>
+</div>
+<div class="footer">Hecho para aprender a invertir a largo plazo 💚 · Los datos quedan guardados en tu dispositivo</div>
+</main>
+<script>
+const KEY='mi-mundo-inversor-v1';let records=[];
+const $=id=>document.getElementById(id);const money=n=>new Intl.NumberFormat('es-AR',{style:'currency',currency:'ARS',maximumFractionDigits:0}).format(n||0);const usd=n=>new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0}).format(n||0);
+function load(){try{records=JSON.parse(localStorage.getItem(KEY)||'[]');if(!Array.isArray(records))records=[]}catch{records=[]}render()}
+function save(){localStorage.setItem(KEY,JSON.stringify(records));render()}
+function render(){
+ const last=records[records.length-1],value=last?.value||0,fx=last?.fx||0,total=records.reduce((s,r)=>s+(+r.deposit||0),0),profit=value-total,usdValue=fx?value/fx:0;
+ $('ars').textContent=money(value);$('usd').textContent=fx?usd(usdValue)+' aprox.':'Cargá la cotización del dólar';$('contributed').textContent=money(total);
+ $('profit').textContent=(profit<0?'−':'')+money(Math.abs(profit));$('profit').className=profit<0?'negative':profit>0?'positive':'';$('profitPct').textContent=total?((profit/total)*100).toFixed(1)+'% sobre los aportes':'Todavía no hay registros';
+ let title='¡Manos a la obra!',sub='Tu mundo empieza con el primer aporte',buildings=['🪵','🧑‍🌾','🛠️'],goal=100,pct=0;
+ if(usdValue>=1000){title='¡Una ciudad en crecimiento!';sub='Llegaste a la gran meta de USD 1.000';buildings=['🏙️','🏢','🏬','🌳','🏡','🏙️','🏢'];goal=1000;pct=100}
+ else if(usdValue>=500){title='¡Ya tenemos una ciudad!';sub='El pueblo se convirtió en ciudad';buildings=['🏘️','🏠','🏢','🌳','🏡','🏬'];goal=1000;pct=(usdValue-500)/500*100}
+ else if(usdValue>=100){title='¡Nació el pueblo!';sub='Las primeras casas ya están en pie';buildings=['🏠','🏡','🏘️','🌳','🏠'];goal=500;pct=(usdValue-100)/400*100}
+ else if(usdValue>0){title='¡El equipo está construyendo!';sub='Cada aporte suma ladrillos y nuevas manos';buildings=['🪵','👷','🧱','🛠️','👩‍🌾'];goal=100;pct=usdValue/100*100}
+ $('worldTitle').textContent=title;$('worldSub').textContent=sub;$('land').innerHTML=buildings.map(x=>'<span class="building">'+x+'</span>').join('');
+ const people=Math.floor(value/1000);$('crew').textContent='👷 '+Math.max(3,Math.min(12,records.length*2+3))+' constructores · 🧑‍🤝‍🧑 '+people.toLocaleString('es-AR')+' habitantes';
+ $('nextGoal').textContent=usd(goal);$('progressText').textContent=Math.max(0,Math.min(100,pct)).toFixed(0)+'%';$('progress').style.width=Math.max(0,Math.min(100,pct))+'%';
+ $('history').innerHTML=records.length?records.slice().reverse().map(r=>'<div class="entry"><div><b>'+r.month+'</b><small>Aporte: '+money(r.deposit)+'</small></div><div style="text-align:right"><b>'+money(r.value)+'</b><small class="'+(r.change<0?'negative':'positive')+'">'+(r.change<0?'−':'＋')+money(Math.abs(r.change))+'</small></div></div>').join(''):'<div class="empty">Todavía no hay meses cargados. ¡A construir!</div>';
+ const losses=records.filter(r=>r.change<0);$('graveyard').innerHTML=losses.length?losses.map(r=>'<div class="tomb">🪦<b>'+r.month+'</b>'+money(r.change)+'</div>').join(''):'<div class="empty">Por ahora no hay meses para recordar. ¡Ojalá sean pocos!</div>';
+ drawChart();
+}
+function drawChart(){const svg=$('chart');if(records.length<2){svg.innerHTML='<text x="250" y="90" text-anchor="middle" fill="#718176" font-size="13">'+(records.length?'Agregá otro mes para ver la evolución':'Tus registros aparecerán acá')+'</text>';return}
+ const vals=records.map(r=>r.value),max=Math.max(...vals,1),min=Math.min(...vals,0),range=max-min||1;const pts=vals.map((v,i)=>[25+i*450/(vals.length-1),150-(v-min)/range*125]);const line=pts.map(p=>p.join(',')).join(' ');
+ svg.innerHTML='<line x1="20" y1="150" x2="480" y2="150" stroke="#dce4d8"/><polyline points="'+line+'" fill="none" stroke="#3f8b61" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>'+pts.map(p=>'<circle cx="'+p[0]+'" cy="'+p[1]+'" r="4" fill="#e9b84d"/>').join('')+'<text x="22" y="172" fill="#718176" font-size="10">'+records[0].month+'</text><text x="478" y="172" text-anchor="end" fill="#718176" font-size="10">'+records[records.length-1].month+'</text>'}
+$('save').onclick=()=>{const month=$('month').value,deposit=Number($('deposit').value),value=Number($('value').value),fx=Number($('fx').value);if(!month||$('deposit').value===''||$('value').value===''||!(fx>0)||deposit<0||value<0){alert('Completá el mes, el aporte, el valor de la cartera y el dólar de referencia.');return}
+ const idx=records.findIndex(r=>r.month===month);if(idx>=0&&!confirm('Ese mes ya existe. ¿Querés reemplazarlo?'))return;
+ const previous=records.filter(r=>r.month<month).sort((a,b)=>a.month.localeCompare(b.month)).at(-1);const change=value-(previous?.value||0)-deposit;
+ const rec={month,deposit,value,fx,change};if(idx>=0)records[idx]=rec;else records.push(rec);records.sort((a,b)=>a.month.localeCompare(b.month));save();$('deposit').value='';$('value').value='';alert('¡Actualización guardada! El mundo ya refleja el nuevo estado.')}
+$('export').onclick=()=>{const blob=new Blob([JSON.stringify(records,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='respaldo-mi-mundo-inversor.json';a.click();URL.revokeObjectURL(a.href)}
+$('importBtn').onclick=()=>$('file').click();$('file').onchange=async e=>{try{const incoming=JSON.parse(await e.target.files[0].text());if(!Array.isArray(incoming)||!incoming.every(r=>r.month&&Number.isFinite(r.value)))throw Error();if(confirm('¿Reemplazar el historial actual por el respaldo?')){records=incoming.sort((a,b)=>a.month.localeCompare(b.month));save()}}catch{alert('No se pudo leer el respaldo.')}e.target.value=''}
+$('month').value=new Date().toISOString().slice(0,7);load();
+</script></body></html>
